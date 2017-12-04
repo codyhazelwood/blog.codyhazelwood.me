@@ -2,6 +2,7 @@
 layout: post
 title:  "Motorized Faders and the Arduino"
 date:   2012-05-15 21:28:00 -0600
+permalink: /motorized-faders-and-the-arduino/
 categories: MIDI Arduino Fader
 ---
 As an audio engineer, one fun thing to do is to switch between layers on a digital console as people walk by.  Moving faders are a relatively simple concept, but they seem to amaze people.  I have to admit, they are pretty cool.  But more important than the coolness factor is the amount of flexibility they provide for mixing.

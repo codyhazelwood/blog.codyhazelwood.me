@@ -2,6 +2,7 @@
 layout: post
 title:  "MIDI Control with an Arduino and a Motorized Fader"
 date:   2012-09-12 12:02:00 -0600
+permalink: /midi-control-with-an-arduino-and-a-motorized-fader/
 categories: MIDI Arduino Fader
 ---
 Ever wondered how to get started on building your own MIDI controller with a Motorized Fader?  Well first go read my <a title="Motorized Faders and the Arduino" href="http://blog.codyhazelwood.me/motorized-faders-and-the-arduino/">last post</a> on getting the Motorized Fader working, then look over the parts list, video, and code below!  I haven't described this part of the project in very much detail, but getting from the last part to this part is fairly simple.  The most difficult part is the code.
