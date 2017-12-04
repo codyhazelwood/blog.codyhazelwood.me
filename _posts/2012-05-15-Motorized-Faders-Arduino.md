@@ -9,9 +9,9 @@ As an audio engineer, one fun thing to do is to switch between layers on a digit
 
 To begin my journey into the world of audio-related programming and hardware development, I decided to do a project to help me understand the technology behind moving fader control.  The first part of this project is to make a motorized fader function with the Arduino platform.  I'm going to give you step by step instructions to build this part of the project, including the parts I used.
 
-### Parts Needed:
+![Fader and breadboard](/assets/2012-05-15/IMG_0005.jpg)
 
-![Fader and breadboard](/content/images/2014/Sep/IMG_0005.jpg)
+### Parts Needed:
 
 * Arduino Uno
 * Motorized Fader
