@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-12-03T19:39:24-06:00</updated><id>/</id><title type="html">Cody Hazelwood</title><subtitle>Software Engineer and Audio Enthusiast</subtitle><entry><title type="html">MIDI Control with an Arduino and a Motorized Fader</title><link href="/midi-control-with-an-arduino-and-a-motorized-fader/" rel="alternate" type="text/html" title="MIDI Control with an Arduino and a Motorized Fader" /><published>2012-09-12T13:02:00-05:00</published><updated>2012-09-12T13:02:00-05:00</updated><id>/MIDI-Control-Arduino</id><content type="html" xml:base="/midi-control-with-an-arduino-and-a-motorized-fader/">&lt;p&gt;Ever wondered how to get started on building your own MIDI controller with a Motorized Fader?  Well first go read my &lt;a title=&quot;Motorized Faders and the Arduino&quot; href=&quot;http://blog.codyhazelwood.me/motorized-faders-and-the-arduino/&quot;&gt;last post&lt;/a&gt; on getting the Motorized Fader working, then look over the parts list, video, and code below!  I haven’t described this part of the project in very much detail, but getting from the last part to this part is fairly simple.  The most difficult part is the code.&lt;/p&gt;
+
+&lt;p&gt;This project relies on a couple of external libraries for things like MIDI and Capacitance Sensing (fader touch sensitivity).  Look at the comments in the code for library info, pin setup, etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;parts-needed&quot;&gt;Parts Needed:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Arduino Uno&lt;/li&gt;
+  &lt;li&gt;Motorized Fader&lt;/li&gt;
+  &lt;li&gt;Breadboard&lt;/li&gt;
+  &lt;li&gt;H-Bridge&lt;/li&gt;
+  &lt;li&gt;External 9-10 V DC Power Supply&lt;/li&gt;
+  &lt;li&gt;1 M Resistor&lt;/li&gt;
+  &lt;li&gt;10 k Resistor&lt;/li&gt;
+  &lt;li&gt;10 µF Capacitor&lt;/li&gt;
+  &lt;li&gt;Potentiometer&lt;/li&gt;
+  &lt;li&gt;2 Push Buttons&lt;/li&gt;
+  &lt;li&gt;2 MIDI Cables&lt;/li&gt;
+  &lt;li&gt;Opto-coupler (Optional, but highly recommended for MIDI spec)&lt;/li&gt;
+  &lt;li&gt;2 Breadboard Mount 5 Pin MIDI Connectors&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;things-to-know&quot;&gt;Things to Know:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Read the Code!!!&lt;/li&gt;
+  &lt;li&gt;MIDI Output Schematic - http://arduino.cc/en/Tutorial/Midi&lt;/li&gt;
+  &lt;li&gt;MIDI Input Schematic - http://www.midi.org/techspecs/electrispec.php&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div style=&quot;width: 90%; margin: 20px auto 0 auto; text-align: center; background-color: lightblue; padding: 10px; border-radius: 5px;&quot;&gt;
+	&lt;a href=&quot;https://github.com/codyhazelwood/motorized-fader-arduino/blob/master/midicontrol/midicontrol.pde&quot; target=&quot;_blank&quot;&gt;Code&lt;/a&gt;&lt;br /&gt;
+    &lt;a href=&quot;http://youtu.be/toj8JRJ-4rI&quot; target=&quot;_blank&quot;&gt;Video&lt;/a&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">Ever wondered how to get started on building your own MIDI controller with a Motorized Fader? Well first go read my last post on getting the Motorized Fader working, then look over the parts list, video, and code below! I haven’t described this part of the project in very much detail, but getting from the last part to this part is fairly simple. The most difficult part is the code.</summary></entry><entry><title type="html">Motorized Faders and the Arduino</title><link href="/motorized-faders-and-the-arduino/" rel="alternate" type="text/html" title="Motorized Faders and the Arduino" /><published>2012-05-15T22:28:00-05:00</published><updated>2012-05-15T22:28:00-05:00</updated><id>/Motorized-Faders-Arduino</id><content type="html" xml:base="/motorized-faders-and-the-arduino/">&lt;p&gt;As an audio engineer, one fun thing to do is to switch between layers on a digital console as people walk by.  Moving faders are a relatively simple concept, but they seem to amaze people.  I have to admit, they are pretty cool.  But more important than the coolness factor is the amount of flexibility they provide for mixing.&lt;/p&gt;
+
+&lt;p&gt;To begin my journey into the world of audio-related programming and hardware development, I decided to do a project to help me understand the technology behind moving fader control.  The first part of this project is to make a motorized fader function with the Arduino platform.  I’m going to give you step by step instructions to build this part of the project, including the parts I used.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2012-05-15/IMG_0005.jpg&quot; alt=&quot;Fader and breadboard&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;parts-needed&quot;&gt;Parts Needed:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Arduino Uno&lt;/li&gt;
+  &lt;li&gt;Motorized Fader&lt;/li&gt;
+  &lt;li&gt;Breadboard&lt;/li&gt;
+  &lt;li&gt;H-Bridge&lt;/li&gt;
+  &lt;li&gt;External 9-10 V DC Power Supply&lt;/li&gt;
+  &lt;li&gt;1 M Resistor&lt;/li&gt;
+  &lt;li&gt;10 k Resistor&lt;/li&gt;
+  &lt;li&gt;10 µF Capacitor&lt;/li&gt;
+  &lt;li&gt;Potentiometer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;motor-control&quot;&gt;Motor Control:&lt;/h3&gt;
+
+&lt;p&gt;The first step in understanding how to control the fader is understanding how to control the motor on the fader.  The fader contains a DC motor with two terminals.  If power is applied in one direction, the motor goes one way, and if you reverse the power, the motor will go the other way.  Using a a digital out pin on the Arduino will give us control of the motor in one direction, but there is no way reverse the direction of the motor without help.&lt;/p&gt;
+
+&lt;p&gt;The device that will allow us to control the direction that power is applied to the motor is called an H-Bridge.  An H-Bridge is a network of 4-6 transistors that has 2 control pins, 2 output pins, a chip power pin, a motor power pin, and ground.  Based on the values of the control pins, the motor will either go forwards, backwards, or it will stop.&lt;/p&gt;
+
+&lt;div style=&quot;float: right; padding: 5px;&quot;&gt;
+  &lt;table width=&quot;250px&quot; border=&quot;1&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;&lt;strong&gt;EN&lt;/strong&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;strong&gt;1A&lt;/strong&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;strong&gt;2A&lt;/strong&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;strong&gt;FUNCTION&lt;/strong&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt; H&lt;/td&gt;
+        &lt;td&gt; L&lt;/td&gt;
+        &lt;td&gt; H&lt;/td&gt;
+        &lt;td&gt; Right&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt; H&lt;/td&gt;
+        &lt;td&gt; H&lt;/td&gt;
+        &lt;td&gt; L&lt;/td&gt;
+        &lt;td&gt; Left&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt; H&lt;/td&gt;
+        &lt;td&gt; L&lt;/td&gt;
+        &lt;td&gt; L&lt;/td&gt;
+        &lt;td&gt; Stop&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt; H&lt;/td&gt;
+        &lt;td&gt; H&lt;/td&gt;
+        &lt;td&gt; H&lt;/td&gt;
+        &lt;td&gt; Stop&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The logic table to your right shows exactly which control values are needed to use the H-Bridge to control the motor.  As shown in the table, if the control pins are different, the motor will turn, and if they are the same, then the motor will stop.  I would recommend wiring the enable pin to +5 V so you don’t have to waste an Arduino pin.&lt;/p&gt;
+
+&lt;h3 id=&quot;touch-sensitivity&quot;&gt;Touch Sensitivity:&lt;/h3&gt;
+
+&lt;p&gt;The next important thing to deal with is touch sensitivity.  Motorized faders generally use a capacitance sensing circuit to determine if someone is touching the fader.  Luckily, there is an Arduino library called &lt;a href=&quot;http://www.arduino.cc/playground/Main/CapSense&quot; target=&quot;_blank&quot;&gt;CapSense&lt;/a&gt; that makes this very easy.  Using a 1 M resistor and 2 digital pins on the Arduino, you can easily detect when the fader is touched.  The following code shows a simple example that will light up the LED on the Arduino when the fader is touched:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span class=&quot;cp&quot;&gt;#include &quot;CapSense.h&quot;
+&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Setup your pins and set pin 13 for output
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CapSense&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;touchLine&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CapSense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;touchSendPin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;touchReceivePin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;loop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;touchLine&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;capSense&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;700&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;digitalWrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HIGH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;digitalWrite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LOW&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Being able to detect touch is important for two reasons.  The most important one is to protect your motor. Pulling on the fader while the motor is trying to move it can strain the motor, so by using touch sensitivity, you can tell the motor to stop while the fader is being touched.  Another reason is for MIDI control.  If you are using the fader to write automation, it’s important to inform the DAW that you are touching the fader, so it will know when to start or stop writing automation.&lt;/p&gt;
+
+&lt;h3 id=&quot;reading-fader-position&quot;&gt;Reading Fader Position:&lt;/h3&gt;
+
+&lt;p&gt;The easiest part of this project is reading the position of the fader.  It works exactly like a potentiometer (because a fader is a potentiometer, just in a different layout).  To read the position, connect the bottom of the fader to ground, the top of the fader to +5 V from the Arduino, and connect the wiper to an Analog In pin.  From there, you can use analogRead to get the fader’s position (a 10 bit value between 0 and 1023).&lt;/p&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary:&lt;/h3&gt;
+
+&lt;p&gt;This project was a fun way to experiment with controlling a fader with the Arduino.  There are many improvements that could be made to this project such as adding a full calibration curve for the fader or using PWM (pulse width modulation) to make the fader move slower and more accurately for small movements.  The next post will use this project and add MIDI control.&lt;/p&gt;
+
+&lt;p&gt;If you have any questions, feel free to comment and I’ll answer them as soon as possible!&lt;/p&gt;
+
+&lt;div style=&quot;width: 90%; margin: 20px auto 0 auto; text-align: center; background-color: lightblue; padding: 10px; border-radius: 5px;&quot;&gt;
+  &lt;a href=&quot;https://github.com/codyhazelwood/motorized-fader-arduino/blob/master/docs/mfcschematic.pdf&quot; target=&quot;_blank&quot;&gt;Schematic&lt;/a&gt;&lt;br /&gt;
+  &lt;a href=&quot;https://github.com/codyhazelwood/motorized-fader-arduino/blob/master/docs/mfcbreadboard.pdf&quot; target=&quot;_blank&quot;&gt;Breadboard Layout&lt;/a&gt;&lt;br /&gt;
+  &lt;a href=&quot;https://github.com/codyhazelwood/motorized-fader-arduino/blob/master/fadercontrol/fadercontrol.pde&quot; target=&quot;_blank&quot;&gt;Code&lt;/a&gt;&lt;br /&gt;
+  &lt;a href=&quot;https://github.com/codyhazelwood/motorized-fader-arduino/blob/master/docs/Mackie%20Control%20MIDI%20Map.pdf&quot; target=&quot;_blank&quot;&gt;Mackie Control MIDI Map&lt;/a&gt;&lt;br /&gt;
+  &lt;a href=&quot;http://www.youtube.com/watch?v=ZKK5pNx-M5o&quot;&gt; Video&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;iframe src=&quot;http://www.youtube.com/embed/ZKK5pNx-M5o&quot; frameborder=&quot;0&quot; width=&quot;560&quot; height=&quot;315&quot; style=&quot;display: block; margin: 20px auto;&quot;&gt;&lt;/iframe&gt;</content><author><name></name></author><summary type="html">As an audio engineer, one fun thing to do is to switch between layers on a digital console as people walk by. Moving faders are a relatively simple concept, but they seem to amaze people. I have to admit, they are pretty cool. But more important than the coolness factor is the amount of flexibility they provide for mixing.</summary></entry></feed>
